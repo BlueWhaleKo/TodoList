@@ -1,21 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TodoItem } from './TodoItem';
-import { MdAdd } from 'react-icons/md';
-
-export function TodoCreate() {
-  return (
-    <div className="rounded-full h-6 w-6 bg-green-300 mr-4 flex items-center justify-center text-white">
-      <MdAdd />
-    </div>
-  );
-}
+import { TodoStateContext } from './TodoContext';
+import { TodoCreate } from './TodoCreate';
 
 export function TodoList() {
+  const state = useContext(TodoStateContext);
+
   return (
     <div className="flex-1 flex-col overflow-y-auto py-4 px-8 justify-center">
-      <TodoItem />
-      <TodoItem />
-
+      {state?.items.map((item) => {
+        return <TodoItem key={item.id} {...item} />;
+      })}
       <TodoCreate />
     </div>
   );
