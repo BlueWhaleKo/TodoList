@@ -15,7 +15,7 @@ function TodoCreateInput(props: {
           type="text"
           onChange={onChange}
           value={input}
-          className="shadow border-gray-200 h-6"
+          className="shadow border-gray-200 h-6 focus:outline-none appearance-none"
         />
       </form>
     </>

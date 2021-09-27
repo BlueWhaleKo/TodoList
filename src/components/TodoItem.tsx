@@ -31,22 +31,17 @@ function CheckCircle(props: { id: number; isDone: boolean }) {
     });
   };
 
+  const commonClass =
+    'rounded-full h-6 w-6 border-2 border-gray-200 mr-4 flex justify-center items-center cursor-pointer ';
   if (!isDone) {
-    return (
-      <div>
-        <div
-          onClick={onClick}
-          className="rounded-full h-6 w-6 border-2 border-gray-200 mr-4 flex"
-        ></div>
-      </div>
-    );
+    return <div onClick={onClick} className={commonClass}></div>;
   }
 
   return (
     <div>
       <div
         onClick={onClick}
-        className="rounded-full h-6 w-6 border-2 border-green-400 mr-4 text-green-400 flex justify-center items-center"
+        className={`${commonClass} border-green-400 text-green-400 `}
       >
         <MdDone />
       </div>
@@ -58,10 +53,10 @@ function TodoText(props: { isDone: boolean; text: string }) {
   const { isDone, text } = props;
 
   if (isDone) {
-    return <div className="text-gray-200">{text}</div>;
+    return <div className="text-gray-200 flex-1">{text}</div>;
   }
 
-  return <div>{text}</div>;
+  return <div className="flex-1">{text}</div>;
 }
 
 function Remove(props: { id: number }) {
@@ -78,7 +73,7 @@ function Remove(props: { id: number }) {
   return (
     <div
       onClick={onRemove}
-      className="text-gray-300 flex flex-1 cursor-pointer justify-end"
+      className="text-gray-300 cursor-pointer hover:text-red-400"
     >
       <MdDelete />
     </div>
